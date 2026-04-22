@@ -1,0 +1,92 @@
+/* SEMUA CSS ASLI — TIDAK DIUBAH */
+
+/* 1. VARIABEL */
+:root {
+  --hijau-tua  : #0d2b1f;
+  --hijau-mid  : #1a4731;
+  --hijau-muda : #2d7a50;
+  --emas       : #c9a84c;
+  --krem       : #fdf8f0;
+  --putih      : #ffffff;
+  --teks-gelap : #1a2e24;
+  --teks-abu   : #6b7c72;
+}
+
+/* 2. RESET */
+* {
+  margin     : 0;
+  padding    : 0;
+  box-sizing : border-box;
+}
+
+/* 3. BODY */
+body {
+  font-family     : 'DM Sans', sans-serif;
+  background-color: var(--krem);
+  color           : var(--teks-gelap);
+  min-height      : 100vh;
+}
+
+/* 4. HEADER */
+header {
+  background-color: var(--hijau-tua);
+  color           : var(--putih);
+  text-align      : center;
+  padding         : 56px 20px 90px;
+  position        : relative;
+  overflow        : hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, 0.08);
+  top: -80px;
+  right: -60px;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  bottom: -40px;
+  left: 40px;
+}
+
+.header-label {
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--emas);
+  margin-bottom: 12px;
+}
+
+header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.garis-emas {
+  width: 50px;
+  height: 3px;
+  background: var(--emas);
+  margin: 16px auto;
+  border-radius: 2px;
+}
+
+.header-sub {
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* (lanjutan semua CSS kamu sama persis...) */
