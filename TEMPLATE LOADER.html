@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Loader Template</title>
+
+  <style>
+    :root {
+      --loader-bg: #ffffff;
+      --loader-text-color: #000000;
+      --loader-accent: #000000;
+      --loader-speed: 10s;
+      --loader-font-size: 40px;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    /* LOADER WRAPPER */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--loader-bg);
+      z-index: 9999;
+      overflow: hidden;
+      transition: opacity 0.5s ease;
+    }
+
+    /* CLIP AREA */
+    .loader-clip {
+      position: absolute;
+      width: 100%;
+      height: 33.3%;
+      overflow: hidden;
+    }
+
+    .clip-top {
+      top: 0;
+      background: var(--loader-accent);
+    }
+
+    .clip-bottom {
+      bottom: 0;
+      background: var(--loader-accent);
+    }
+
+    .clip-center {
+      top: 33.3%;
+      height: 33.4%;
+      position: absolute;
+    }
+
+    /* TEXT SCROLL */
+    .marquee {
+      position: absolute;
+      white-space: nowrap;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .marquee-container {
+      display: inline-block;
+      animation: scroll var(--loader-speed) linear infinite;
+    }
+
+    .marquee-container span {
+      font-size: var(--loader-font-size);
+      color: var(--loader-text-color);
+      margin-right: 40px;
+      font-weight: bold;
+    }
+
+    /* ANIMATION */
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* DEMO CONTENT */
+    .content {
+      padding: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" data-text="GLORIA">
+    <div class="loader-clip clip-top">
+      <div class="marquee">
+        <div class="marquee-container"></div>
+      </div>
+    </div>
+
+    <div class="loader-clip clip-bottom">
+      <div class="marquee">
+        <div class="marquee-container"></div>
+      </div>
+    </div>
+
+    <div class="clip-center">
+      <div class="marquee">
+        <div class="marquee-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISI WEBSITE -->
+  <div class="content">
+    <h1>Website kamu</h1>
+    <p>Loader akan hilang setelah halaman selesai load.</p>
+  </div>
+
+  <script>
+    // Ambil teks dari data-text
+    const loader = document.querySelector(".loader");
+    const text = loader.dataset.text || "Loading";
+
+    const containers = document.querySelectorAll(".marquee-container");
+
+    // Isi teks berulang
+    containers.forEach(container => {
+      let content = "";
+      for (let i = 0; i < 20; i++) {
+        content += `<span>${text}</span>`;
+      }
+      container.innerHTML = content;
+    });
+
+    // Hilangkan loader setelah load
+    window.addEventListener("load", () => {
+      loader.style.opacity = "0";
+      loader.style.pointerEvents = "none";
+
+      setTimeout(() => {
+        loader.remove();
+      }, 500);
+    });
+  </script>
+
+</body>
+</html>
